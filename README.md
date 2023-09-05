@@ -1,5 +1,5 @@
 # Embedded Systems Workshop: Microcontroller Architecture and Interfacing with ARM Cortex
-Workshop content:
+# Workshop content:
 1) C-Language Basics.
 2) Advanced C Programming: pointers,macros,processor architecture and memory types.
 3) ARM Architecture.
