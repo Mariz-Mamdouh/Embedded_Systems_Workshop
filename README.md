@@ -1,1 +1,1 @@
-# Embedded_Systems_Workshop
+# Embedded Systems Workshop: Microcontroller Architecture and Interfacing with ARM Cortex
