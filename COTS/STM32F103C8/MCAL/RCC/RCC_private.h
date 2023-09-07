@@ -147,5 +147,27 @@
 
 /** @} */ // end of RCC_Clock_Type
 
+/**
+ * @defgroup RCC_PLLMUL RCC PLL multiplication factor Macros
+ * @{
+ */
+    #define RCC_PLLX2  2
+    #define RCC_PLLX3  3
+    #define RCC_PLLX4  4
+    #define RCC_PLLX5  5
+    #define RCC_PLLX6  6
+    #define RCC_PLLX7  7
+    #define RCC_PLLX8  8
+    #define RCC_PLLX9  9
+    #define RCC_PLLX10 10
+    #define RCC_PLLX11 11
+    #define RCC_PLLX12 12
+    #define RCC_PLLX13 13
+    #define RCC_PLLX14 14
+    #define RCC_PLLX15 15
+    #define RCC_PLLX16 16
+    #define RCC_PLLX16 17
+
+/** @} */ // end of RCC_PLLMUL
 
 #endif /*RCC_PRIVATE_H*/
