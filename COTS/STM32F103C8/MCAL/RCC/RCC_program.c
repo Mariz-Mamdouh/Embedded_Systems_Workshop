@@ -60,12 +60,124 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
             CLR_BIT(RCC_CFGR,RCC_CFGR_PLLSRC)
         #elif RCC_PLLSRC==RCC_PLLSRC_HSE
             SET_BIT(RCC_CFGR,RCC_CFGR_PLLSRC)
+
+             /**< HSE divider for PLL entry*/
+            #if RCC_PLLXTPRE == RCC_PLL_HSEDV
+                Bits *ptr=0x40021004;
+                ptr -> Bit17=1;
+            #elif RCC_PLL_HSE == RCC_PLL_HSENDV
+                ptr -> Bit17=0;
+            #else
+                #error "Wrong choice!" 
+            #endif /**< RCC_PLL_HSE*/
+            
         #else
             #error "Wrong choice!" 
         #endif /**< RCC_PLLSRC/
 
         /**< PLL multiplication factor*/
-        
+        switch(RCC_PLLMUL)
+        {
+            case(RCC_PLLX2):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=0;
+                 break;
+           case(RCC_PLLX3):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=0;
+                 break;
+            case(RCC_PLLX4):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=0;
+                 break;
+            case(RCC_PLLX5):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=0;
+                 break;
+            case(RCC_PLLX6):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=0;
+                 break;
+            case(RCC_PLLX7):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=0;
+                 break;
+            case(RCC_PLLX8):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=0;
+                 break;
+            case(RCC_PLLX9):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=0;
+                 break;
+            case(RCC_PLLX10):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=1;
+                 break;
+            case(RCC_PLLX11):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=1;
+                 break;
+            case(RCC_PLLX12):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=1;
+                 break;
+            case(RCC_PLLX13):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=0;
+                 ptr -> Bit21=1;
+                 break;
+            case(RCC_PLLX14):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=1;
+                 break;
+            case(RCC_PLLX15):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=0;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=1;
+                 break;
+            case(RCC_PLLX16):
+                 ptr -> Bit18=0;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=1;
+                 break;
+             case(RCC_PLLX16):
+                 ptr -> Bit18=1;
+                 ptr -> Bit19=1;
+                 ptr -> Bit20=1;
+                 ptr -> Bit21=1;
+                 break;
+            default:
+                #error "Wrong choice!"
+        }
+
         /**< Enable PLL*/
         SET_BIT(RCC_CR,RCC_CR_PLLON);
 
@@ -73,9 +185,8 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         while(!GET_BIT(RCC_CR,RCC_CR_PLLRDY));
 
         /**< Select the PLL as a SYSCLK */
-        ByteBits_t *ptr=0x40021004;
-        ptr -> Bits.Bit0=0;
-        ptr -> Bits.Bit0=1;
+        ptr -> Bit0=0;
+        ptr -> Bit1=1;
 
         local_FunctionStatus=E_OK;
 
