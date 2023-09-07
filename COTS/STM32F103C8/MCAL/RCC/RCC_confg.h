@@ -85,33 +85,3 @@
 
 
 #endif /*RCC_CONFG_H*/
-
-/**
- * @brief Configure the clock type for RCC_SYSCLK when using RCC_HSE.
- * @note Choose one of the available options:
- *       RCC_RC_CLK       - RC oscillator will be the source of the clock system.
- *       RCC_CRYSTAL_CLK - Crystal oscillator will be the source of the clock system.
- */
-#if RCC_SYSCLK==RCC_HSE
-
-#define RCC_CLK_BYPASS   RCC_RC_CLK
-
-#endif /*RCC_SYSCLK*/ 
-
-/**
- * @brief Configure the clock Source wor PLL.
- * @note Choose one of the available options:
- *       RCC_PLLSRC_HSI      - HSI oscillator clock / 2 selected as PLL input clock.
- *       RCC_PLLSRC_HSE      - HSE oscillator clock selected as PLL input clock.
- */
-#if RCC_SYSCLK == RCC_PLL
-
-#define RCC_PLLSRC  RCC_PLLSRC_HSE
-
-#endif /**< RCC_SYSCLK */
-
-/** @} */ // end of RCC_System_Clock_Config 
-
-
-
-#endif /*RCC_CONFG_H*/
