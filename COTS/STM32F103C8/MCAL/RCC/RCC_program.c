@@ -14,7 +14,7 @@
 #include "RCC_private.h"
 #include "RCC_confg.h"
 
-
+/*****************************< Function Implementations *****************************/
 Std_ReturnType Mcal_Rcc_InitSysClock(void)
 {
     Std_ReturnType local_FunctionStatus=E_NOT_OK;
@@ -57,19 +57,18 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
 
         /**< Select the Clock Source of PLL*/
         #if RCC_PLLSRC==RCC_PLLSRC_HSI
-            CLR_BIT(RCC_CFGR,RCC_CFGR_PLLSRC)
+            CLR_BIT(RCC_CFGR,RCC_CFGR_PLLSRC);
         #elif RCC_PLLSRC==RCC_PLLSRC_HSE
-            SET_BIT(RCC_CFGR,RCC_CFGR_PLLSRC)
+            SET_BIT(RCC_CFGR,RCC_CFGR_PLLSRC);
 
              /**< HSE divider for PLL entry*/
             #if RCC_PLLXTPRE == RCC_PLL_HSEDV
-                Bits *ptr=0x40021004;
-                ptr -> Bit17=1;
-            #elif RCC_PLL_HSE == RCC_PLL_HSENDV
-                ptr -> Bit17=0;
+                SET_BIT(RCC_CFGR,RCC_CFGR_PLLXTPRE);
+            #elif RCC_PLLXTPRE == RCC_PLL_HSENDV
+                CLR_BIT(RCC_CFGR,RCC_CFGR_PLLXTPRE);
             #else
                 #error "Wrong choice!" 
-            #endif /**< RCC_PLL_HSE*/
+            #endif /**< RCC_PLLXTPRE*/
             
         #else
             #error "Wrong choice!" 
@@ -79,103 +78,103 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         switch(RCC_PLLMUL)
         {
             case(RCC_PLLX2):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=0;
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
            case(RCC_PLLX3):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=0;
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX4):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=0;
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX5):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=0;
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX6):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=0;
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX7):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=0;
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX8):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=0;
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX9):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=0;
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX10):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=1;
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX11):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=1;
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX12):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=1;
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX13):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=0;
-                 ptr -> Bit21=1;
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX14):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=1;
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             case(RCC_PLLX15):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=0;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=1;
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
-            case(RCC_PLLX16):
-                 ptr -> Bit18=0;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=1;
+            case(RCC_PLLX16_1):
+                 CLR_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
-             case(RCC_PLLX16):
-                 ptr -> Bit18=1;
-                 ptr -> Bit19=1;
-                 ptr -> Bit20=1;
-                 ptr -> Bit21=1;
+             case(RCC_PLLX16_2):
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL0);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL1);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL2);
+                 SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             default:
-                #error "Wrong choice!"
+                local_FunctionStatus=E_NOT_OK;
         }
 
         /**< Enable PLL*/
@@ -185,8 +184,8 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         while(!GET_BIT(RCC_CR,RCC_CR_PLLRDY));
 
         /**< Select the PLL as a SYSCLK */
-        ptr -> Bit0=0;
-        ptr -> Bit1=1;
+        CLR_BIT(RCC_CFGR,RCC_CFGR_SW0);
+        SET_BIT(RCC_CFGR,RCC_CFGR_SW1);
 
         local_FunctionStatus=E_OK;
 
@@ -256,3 +255,4 @@ Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_PeripheralId,u8 Copy_BusId)
 
     return local_FunctionStatus;
 }
+/*****************************< End of Function Implementations *****************************/

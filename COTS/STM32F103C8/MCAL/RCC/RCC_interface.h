@@ -156,4 +156,4 @@ Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_PeripheralId,u8 Copy_BusId);
  */
 
 
-#endif /*RCC_INTERFACE_H*/
+#endif /**< RCC_INTERFACE_H */

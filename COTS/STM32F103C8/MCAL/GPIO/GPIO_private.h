@@ -2,7 +2,7 @@
 /*********   Author    : Mariz Mamdouh   ************/
 /*********   Date      : 29 Aug 2023     ************/
 /*********   Version   : 0.1             ************/
-/*********   File name : GPIO_confg.h    ************/
+/*********   File name : GPIO_private.h  ************/
 /****************************************************/
 #ifndef GPIO_PRIVATE_H
 #define GPIO_PRIVATE_H
