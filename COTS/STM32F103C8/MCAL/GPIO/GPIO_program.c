@@ -12,7 +12,7 @@
 /************************< MCAL **********************/
 #include "GPIO_interface.h"
 #include "GPIO_private.h"
-#include "GPIO_confg.h"
+#include "GPIO_config.h"
 
 /*****************************< Function Implementations *****************************/
 Std_ReturnType MCAL_GPIO_SetPinMode(u8 Copy_PortId, u8 Copy_PinId, u8 Copy_PinMode)
@@ -152,15 +152,15 @@ Std_ReturnType MCAL_GPIO_GetPinValue(u8 Copy_PortId, u8 Copy_PinId, u8 *Copy_Pin
         switch (Copy_PortId)
         {
         case GPIO_PORTA:
-            *Copy_PinReturnValue = GET_BIT(GPIO_IDR,Copy_PinId);
+            *Copy_PinReturnValue = GET_BIT(GPIO_PORTA_IDR,Copy_PinId);
             Local_FunctionStatus = E_OK;
             break;
         case GPIO_PORTB:
-            *Copy_PinReturnValue = GET_BIT(GPIO_IDR,Copy_PinId);
+            *Copy_PinReturnValue = GET_BIT(GPIO_PORTB_IDR,Copy_PinId);
             Local_FunctionStatus = E_OK;
             break;
         case GPIO_PORTC:
-            *Copy_PinReturnValue = GET_BIT(GPIO_IDR,Copy_PinId);
+            *Copy_PinReturnValue = GET_BIT(GPIO_PORTC_IDR,Copy_PinId);
             Local_FunctionStatus = E_OK;
             break;    
         default:

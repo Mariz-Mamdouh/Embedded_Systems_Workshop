@@ -61,10 +61,10 @@
  * @brief Definitions for different GPIO input modes.
  * @{
  */
-#define GPIO_INPUT_ANALOG               0b0000
-#define GPIO_INPUT_FLOATING             0b0100
-#define GPIO_INPUT_PULL_UP              0b1000
-#define GPIO_INPUT_PULL_DOWN            0b1000
+#define GPIO_INPUT_ANALOG               0x00
+#define GPIO_INPUT_FLOATING             0x04
+#define GPIO_INPUT_PULL_UP              0x08
+#define GPIO_INPUT_PULL_DOWN            0x08
 /** @} */
 
 /**
@@ -72,20 +72,20 @@
  * @brief Definitions for different GPIO output modes.
  * @{
  */
-#define GPIO_OUTPUT_PUSH_PULL_10MHZ     0b0001
-#define GPIO_OUTPUT_OPEN_DRAIN_10MHZ    0b0101
-#define GPIO_OUTPUT_AF_PUSH_PULL_10MHZ  0b1001
-#define GPIO_OUTPUT_AF_OPEN_DRAIN_10MHZ 0b1101
+#define GPIO_OUTPUT_PUSH_PULL_10MHZ     0x01
+#define GPIO_OUTPUT_OPEN_DRAIN_10MHZ    0x05
+#define GPIO_OUTPUT_AF_PUSH_PULL_10MHZ  0x09
+#define GPIO_OUTPUT_AF_OPEN_DRAIN_10MHZ 0x0D
 
-#define GPIO_OUTPUT_PUSH_PULL_2MHZ      0b0010
-#define GPIO_OUTPUT_OPEN_DRAIN_2MHZ     0b0110
-#define GPIO_OUTPUT_AF_PUSH_PULL_2MHZ   0b1010
-#define GPIO_OUTPUT_AF_OPEN_DRAIN_2MHZ  0b1110
+#define GPIO_OUTPUT_PUSH_PULL_2MHZ      0x02
+#define GPIO_OUTPUT_OPEN_DRAIN_2MHZ     0x06
+#define GPIO_OUTPUT_AF_PUSH_PULL_2MHZ   0x0A
+#define GPIO_OUTPUT_AF_OPEN_DRAIN_2MHZ  0x0E
 
-#define GPIO_OUTPUT_PUSH_PULL_50MHZ     0b0011
-#define GPIO_OUTPUT_OPEN_DRAIN_50MHZ    0b0111
-#define GPIO_OUTPUT_AF_PUSH_PULL_50MHZ  0b1011
-#define GPIO_OUTPUT_AF_OPEN_DRAIN_50MHZ 0b1111
+#define GPIO_OUTPUT_PUSH_PULL_50MHZ     0x03
+#define GPIO_OUTPUT_OPEN_DRAIN_50MHZ    0x07
+#define GPIO_OUTPUT_AF_PUSH_PULL_50MHZ  0x0B
+#define GPIO_OUTPUT_AF_OPEN_DRAIN_50MHZ 0x0F
 /** @} */
 
 /** @} */

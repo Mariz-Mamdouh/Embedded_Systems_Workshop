@@ -30,6 +30,35 @@
 typedef u8 IRQn_Type;
 
 /**
+ * @brief Placeholder Value for Priority Group and Sub-Group
+ *
+ * This macro defines a placeholder value to be used as the "Copy_GroupPriority" 
+ * and "Copy_SubPriority" parameters in the "MCAL_NVIC_vSetPriority" function.
+ * 
+ * When the "PRIORITY_GROUPING" is set to "_0GROUP_16SUB", the "NONE" macro can be 
+ * used as the "Copy_GroupPriority" parameter to indicate that no group priority is 
+ * assigned.
+ * 
+ * When the "PRIORITY_GROUPING" is set to "_16GROUP_0SUB", the "NONE" macro can be 
+ * used as the "Copy_SubPriority" parameter to indicate that no sub-priority is assigned.
+ * 
+ * Example Usage:
+ * @code
+ * /// Using NONE as Copy_GroupPriority when PRIORITY_GROUPING is _0GROUP_16SUB
+ * MCAL_NVIC_vSetPriority(MyIRQ, NONE, 5);
+ *
+ * /// Using NONE as Copy_SubPriority when PRIORITY_GROUPING is _16GROUP_0SUB
+ * MCAL_NVIC_vSetPriority(MyIRQ, 10, NONE);
+ * @endcode
+ */
+#define NONE            ((INVALID_VALUE)-1) 
+
+/**
+ * @} (end of NVIC_Types NVIC Type Definitions)
+ */
+
+
+/**
  * @defgroup NVIC_Interrupts NVIC Interrupt Numbers
  * @brief Macros for NVIC interrupt numbers.
  * @{
@@ -183,7 +212,7 @@ Std_ReturnType Mcal_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn);
  *   - E_OK     : Priority set successfully.
  *   - E_NOT_OK : An error occurred (invalid interrupt number or priority level).
  */
-Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_ IRQn, u32 Copy_priority);
+Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority);
 
 /**
  * @brief Set the priority of a specific interrupt in the NVIC.
@@ -226,7 +255,7 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
  *   - E_OK     : Priority retrieved successfully, and the value is stored in Copy_Priority.
  *   - E_NOT_OK : An error occurred (invalid interrupt number or Copy_Priority pointer is NULL).
  */
-Std_ReturnType Mcal_NVIC_xGetPriority(IRQn_Type Copy_ IRQn);
+Std_ReturnType Mcal_NVIC_xGetPriority(IRQn_Type Copy_IRQn, u8 *Copy_Priority);
 
 /**
  * @} (end of group NVIC_Control)
