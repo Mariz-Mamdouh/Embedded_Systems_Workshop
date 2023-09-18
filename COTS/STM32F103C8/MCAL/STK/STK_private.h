@@ -38,7 +38,7 @@ typedef struct STK_RegDef_t{
  * @retval None
  */
 #define STK_CTRL_CLKSOURCE_1 1
-#define STK_CTRL_CLKSOURCE_8 2
+#define STK_CTRL_CLKSOURCE_8 0
 
 /**
  * @brief Sets the system clock frequency for the SysTick peripheral.
@@ -53,9 +53,9 @@ typedef struct STK_RegDef_t{
  * @retval None
  */
 #if STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_1
-    #define STK_AHB_CLK 8000000  /**< Processor clock (AHB clock) divided by 1 */
+    #define STK_AHB_CLK   8000000  /**< Processor clock (AHB clock) divided by 1 */
 #elif STK_CTRL_CLKSOURCE == STK_CTRL_CLKSOURCE_8
-    #define STK_AHB_CLK 1000000  /**< Processor clock (AHB clock) divided by 8 */
+    #define STK_AHB_CLK   1000000  /**< Processor clock (AHB clock) divided by 8 */
 #else 
     #error "You choose a wrong clock source for the SysTick"
 #endif /**< STK_CTRL_CLKSOURCE */

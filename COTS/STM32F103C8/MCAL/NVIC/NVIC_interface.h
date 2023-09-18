@@ -198,7 +198,7 @@ Std_ReturnType Mcal_NVIC_ClearPendingIRQ(IRQn_Type Copy_IRQn);
  *   - E_OK     : Interrupt is pending, and the pending status is returned in 'Copy_ReturnPendingFlag'.
  *   - E_NOT_OK : An error occurred (invalid interrupt number), and 'Copy_ReturnPendingFlag' is not modified.
  */
-Std_ReturnType Mcal_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn);
+Std_ReturnType Mcal_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendingFlag);
 
 /**
  * @brief Set the priority of a specific interrupt in the NVIC.

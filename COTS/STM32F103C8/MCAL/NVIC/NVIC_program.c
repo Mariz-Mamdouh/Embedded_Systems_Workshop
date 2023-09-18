@@ -127,7 +127,7 @@ Std_ReturnType Mcal_NVIC_ClearPendingIRQ(IRQn_Type Copy_IRQn)
 
 Std_ReturnType Mcal_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendingFlag)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
     if(Copy_ReturnPendingFlag != NULL)
     {
         /**< Check the pending flag based on the interrupt number */ 
@@ -173,15 +173,15 @@ Std_ReturnType Mcal_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendi
     }
     else
     {
-        local_FunctionStatus=E_NOT_OK
+        Local_FunctionStatus=E_NOT_OK;
     }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 
 Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
     if (Copy_IRQn < 0 || Copy_IRQn >= NUMBER_OF_INTERRUPTS) /**< Check if IRQn is within valid range */ 
     {
@@ -206,7 +206,7 @@ Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
     }
 
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 
 Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority, u8 Copy_SubPriority)
@@ -215,16 +215,16 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
 
     u8 NVIC_MAX_Group_Priority;
     u8 NVIC_MAX_Sub_Priority;
-    #if (PRIROITY_GROUPING == NVIC_16GROUP_0SUB)
+    #if (PRIORITY_GROUPING == NVIC_16GROUP_0SUB)
         NVIC_MAX_Group_Priority = 15;
         NVIC_MAX_Sub_Priority = NONE;
-    #elif (PRIROITY_GROUPING == NVIC_8GROUP_2SUB)
+    #elif (PRIORITY_GROUPING == NVIC_8GROUP_2SUB)
         NVIC_MAX_Group_Priority = 7;
         NVIC_MAX_Sub_Priority = 1;
-    #elif (PRIROITY_GROUPING == NVIC_4GROUP_4SUB)
+    #elif (PRIORITY_GROUPING == NVIC_4GROUP_4SUB)
         NVIC_MAX_Group_Priority = 3;
         NVIC_MAX_Sub_Priority = 3;
-    #elif (PRIROITY_GROUPING == NVIC_2GROUP_8SUB)
+    #elif (PRIORITY_GROUPING == NVIC_2GROUP_8SUB)
         NVIC_MAX_Group_Priority = 1;
         NVIC_MAX_Sub_Priority = 7;
     #elif (PRIROITY_GROUPING == NVIC_0GROUP_16SUB)

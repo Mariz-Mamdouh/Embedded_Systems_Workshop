@@ -25,7 +25,7 @@
  *
  * @retval None
  */
-#define STK_CTRL_CLKSOURCE STK_CTRL_CLKSOURCE_8
+#define STK_CTRL_CLKSOURCE     STK_CTRL_CLKSOURCE_8
 
 /**
  * @brief Specifies whether the SysTick timer exception request is enabled.

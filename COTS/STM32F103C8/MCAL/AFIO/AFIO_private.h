@@ -29,13 +29,13 @@
 /**
  * @brief AFIO Register Definition Structure
  */
-typedef struct AFIO_RegDef_t
+typedef struct
 {
-    u32 EVCR;         /**< Event Control Register. */
-    u32 MAPR;         /**< Multiplexed Pin Assignments Register. */
-    u32 EXTICR[4];    /**< External Interrupt Configuration Registers. */
-    u32 MAPR2;        /**< Multiplexed Pin Assignments Register 2. */
-}AFIO_RegDef_t;
+    volatile u32 EVCR;         /**< Event Control Register. */
+    volatile u32 MAPR;         /**< Multiplexed Pin Assignments Register. */
+    volatile u32 EXTICR[4];    /**< External Interrupt Configuration Registers. */
+    volatile u32 MAPR2;        /**< Multiplexed Pin Assignments Register 2. */
+} AFIO_RegDef_t;
 
 /**< Pointer to AFIO register structure */
 #define AFIO  ((AFIO_RegDef_t *)AFIO_BASE_ADDRESS)

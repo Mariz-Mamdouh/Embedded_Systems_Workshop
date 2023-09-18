@@ -61,7 +61,7 @@ typedef enum
     AFIO_REMAP_CUSTOM,   /**< Custom remap (user-defined) */ 
 } AFIO_RemapConfig_t;
 
-/** @} */  // End of AFIO_Remap_Options group
+/** @} */ // End of AFIO_Remap_Options group
 
 
 /**

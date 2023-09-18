@@ -54,6 +54,7 @@
 #define EXTI_PORTMAP_GPIOC  2 /**< Map EXTI line to GPIO Port C. */
 /** @} */
 
+
 /** @} */  // EXTI_Configurations
 
 /**
@@ -71,7 +72,7 @@
  * @note To configure EXTI settings, please refer to the configuration file
  *       (e.g., @ref EXTI_config.h) where you can customize EXTI behavior as needed.
  */
-void EXTI_Init(void);
+void EXTI_vInit(void);
 
 /**
  * @brief Initialize EXTI for a specific GPIO pin.
@@ -98,6 +99,7 @@ void EXTI_Init(void);
  * @endcode
  */
 Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port);
+
 
 /**
  * @brief Enable an external interrupt line.
@@ -140,8 +142,9 @@ Std_ReturnType EXTI_DisableLine(u8 Copy_Line);
  *   - E_OK     : Trigger mode set successfully.
  *   - E_NOT_OK : An error occurred (invalid interrupt line or trigger mode).
  */
-Std_ReturnType EXTI_SetTrigger(u8 Copy_Line , u8 Copy_Mode);
+Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode);
 
 /** @} */ // End of EXTI_Control
+
 
 #endif /**< EXTI_INTERFACE_H */
