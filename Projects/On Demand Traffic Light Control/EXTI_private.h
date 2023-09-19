@@ -1,11 +1,11 @@
-/****************************************************/
-/*********   Author    : Mariz Mamdouh     **********/
-/*********   Date      : 9 Sept 2023       **********/
-/*********   Version   : 0.1               **********/
-/*********   File name : EXTI_private.h    **********/
-/****************************************************/
-#ifndef EXTI_PRIVATE_H
-#define EXTI_PRIVATE_H
+/****************************************************************/
+/******* Author    : Mariz Mamdouh              *****************/
+/******* Date      : 9 Sep 2023                 *****************/
+/******* Version   : 0.1                        *****************/
+/******* File Name : EXTI_private.h             *****************/
+/****************************************************************/
+#ifndef EXTI_PRIVATE_H_
+#define EXTI_PRIVATE_H_
 
 /**< EXTI base address */
 #define EXTI_BASE_ADDRESS    0x40010400U
@@ -46,5 +46,4 @@ typedef struct
 /**< EXTI line configuration settings */
 extern EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT];
 
-
-#endif /**< EXTI_PRIVATE_H */
+#endif /**< EXTI_PRIVATE_H_ */

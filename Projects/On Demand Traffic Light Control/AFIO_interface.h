@@ -1,11 +1,11 @@
-/****************************************************/
-/*********   Author    : Mariz Mamdouh     **********/
-/*********   Date      : 13 Sept 2023      **********/
-/*********   Version   : 0.1               **********/
-/*********   File name : AFIO_interface.h  **********/
-/****************************************************/
-#ifndef AFIO_INTERFACE_H
-#define AFIO_INTERFACE_H
+/****************************************************************/
+/******* Author    : Mariz Mamdouh              *****************/
+/******* Date      : 12 Sep 2023                *****************/
+/******* Version   : 0.1                        *****************/
+/******* File Name : AFIO_config.h              *****************/
+/****************************************************************/
+#ifndef AFIO_INTERFACE_H_
+#define AFIO_INTERFACE_H_
 
 /**
  * @defgroup AFIO_Remap_Options AFIO Remap Options
@@ -61,7 +61,7 @@ typedef enum
     AFIO_REMAP_CUSTOM,   /**< Custom remap (user-defined) */ 
 } AFIO_RemapConfig_t;
 
-/** @} */ // End of AFIO_Remap_Options group
+/** @} */  // End of AFIO_Remap_Options group
 
 
 /**
@@ -78,7 +78,7 @@ typedef enum
  * @param[in] Copy_RemapConfig The configuration value for AF remap and debug I/O.
  * @return Std_ReturnType Returns E_OK if the configuration is successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
+Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
 
 /**
  * @brief Configure debug port settings.
@@ -94,7 +94,7 @@ Std_ReturnType AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
  *
  * @code
  * // Example usage:
- * Std_ReturnType result = AFIO_SetDebugPort(DEBUG_PORT_FULL_SWJ);
+ * Std_ReturnType result = MCAL_AFIO_SetDebugPort(DEBUG_PORT_FULL_SWJ);
  * if (result == E_OK) {
  *     /// Configuration successful
  * } else {
@@ -102,7 +102,17 @@ Std_ReturnType AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
  * }
  * @endcode
  */
-Std_ReturnType AFIO_SetDebugPort(u8 Copy_DebugConfig);
+Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig);
+
+/**
+ * @brief Configure additional mapping settings (MAPR2).
+ *
+ * This function configures additional mapping settings using the AFIO peripheral.
+ *
+ * @param[in] Copy_MAPR2Config The configuration value for additional mapping settings (MAPR2).
+ * @return Std_ReturnType Returns E_OK if the configuration is successful, or E_NOT_OK if an error occurred.
+ */
+Std_ReturnType MCAL_AFIO_SetMAPR2(u32 Copy_MAPR2Config);
 
 /**
  * @brief Configures EXTI (External Interrupt) line mapping for a specific GPIO port.
@@ -122,7 +132,7 @@ Std_ReturnType AFIO_SetDebugPort(u8 Copy_DebugConfig);
  * @code
  * /// Example usage:
  * /// Configure EXTI line 4 to use GPIO port B mapping.
- * Std_ReturnType result = AFIO_SetEXTIConfiguration(EXTI_LINE4, EXTI_PORTMAP_GPIOB);
+ * Std_ReturnType result = MCAL_AFIO_SetEXTIConfiguration(EXTI_LINE4, EXTI_PORTMAP_GPIOB);
  * if (result == E_OK) {
  *     /// Configuration successful
  * } else {
@@ -130,9 +140,13 @@ Std_ReturnType AFIO_SetDebugPort(u8 Copy_DebugConfig);
  * }
  * @endcode
  */
-Std_ReturnType AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap);
+Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap);
 
 /** @} */ // End of AFIO_Functions group
 
 
-#endif /**< AFIO_INTERFACE_H */
+
+
+
+
+#endif /**< AFIO_INTERFACE_H_ */

@@ -1,9 +1,9 @@
-/****************************************************/
-/*********   Author    : Mariz Mamdouh     **********/
-/*********   Date      : 9 Sept 2023       **********/
-/*********   Version   : 0.1               **********/
-/*********   File name : EXTI_program.c    **********/
-/****************************************************/
+/****************************************************************/
+/******* Author    : Mariz Mamdouh              *****************/
+/******* Date      : 9 Sep 2023                 *****************/
+/******* Version   : 0.1                        *****************/
+/******* File Name : EXTI_program.c             *****************/
+/****************************************************************/
 
 /*****************************< LIB *****************************/
 #include "STD_TYPES.h"
@@ -48,7 +48,7 @@ void EXTI_vInit(void)
             if (EXTI_Configurations[Line].GPIO_PortMap != EXTI_GPIO_NONE)
             {
                 /**< Enable EXTI line for the specified GPIO pin */ 
-                AFIO_SetEXTIConfiguration(Line, EXTI_Configurations[Line].GPIO_PortMap);
+                MCAL_AFIO_SetEXTIConfiguration(Line, EXTI_Configurations[Line].GPIO_PortMap);
             }
         }
         else
@@ -86,7 +86,7 @@ Std_ReturnType EXTI_InitForGPIO(u8 GPIO_Pin, u8 GPIO_Port)
     }
 
     /**< Configure EXTI mapping using AFIO function */ 
-    Std_ReturnType Local_Result = AFIO_SetEXTIConfiguration(GPIO_Pin, PortMap);
+    Std_ReturnType Local_Result = MCAL_AFIO_SetEXTIConfiguration(GPIO_Pin, PortMap);
 
     /**< Check if the EXTI configuration was successful */ 
     if (Local_Result == E_OK)
@@ -173,3 +173,4 @@ Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode)
     return Local_FunctionStatus;
 }
 /*****************************< End of Function Implementations *****************************/
+

@@ -1,11 +1,11 @@
-/****************************************************/
-/*********   Author    : Mariz Mamdouh     **********/
-/*********   Date      : 9 Sept 2023       **********/
-/*********   Version   : 0.1               **********/
-/*********   File name : EXTI_config.h     **********/
-/****************************************************/
-#ifndef EXTI_CONFIG_H
-#define EXTI_CONFIG_H
+/****************************************************************/
+/******* Author    : Mariz Mamdouh              *****************/
+/******* Date      : 9 Sep 2023                 *****************/
+/******* Version   : 0.1                        *****************/
+/******* File Name : EXTI_config.h              *****************/
+/****************************************************************/
+#ifndef EXTI_CONFIG_H_
+#define EXTI_CONFIG_H_
 
 /**
  * @brief EXTI Configuration Array
@@ -36,7 +36,7 @@ EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
     {
         .GPIO_PortMap  = EXTI_GPIO_NONE,
         .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_ENABLED,
+        .LineEnabled   = EXTI_LINE_DISNBLED,
     },
 
     /* Configuration for EXTI Line 1 */
@@ -55,9 +55,9 @@ EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
     
     /* Configuration for EXTI Line 3 */
     {
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
+        .GPIO_PortMap  = EXTI_PORTMAP_GPIOA,
         .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISABLED,
+        .LineEnabled   = EXTI_LINE_ENABLED,
     },
     
     /* Configuration for EXTI Line 4 */
@@ -145,4 +145,5 @@ EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
     },
     
 };
-#endif /**< EXTI_CONFIG_H */
+
+#endif /**< EXTI_CONFIG_H_ */

@@ -1,11 +1,11 @@
-/****************************************************/
-/*********   Author    : Mariz Mamdouh     **********/
-/*********   Date      : 9 Sept 2023       **********/
-/*********   Version   : 0.1               **********/
-/*********   File name : EXTI_interface.h  **********/
-/****************************************************/
-#ifndef EXTI_INTERFACE_H
-#define EXTI_INTERFACE_H
+/****************************************************************/
+/******* Author    : Mariz Mamdouh              *****************/
+/******* Date      : 9 Sep 2023                 *****************/
+/******* Version   : 0.1                        *****************/
+/******* File Name : EXTI_interface.h           *****************/
+/****************************************************************/
+#ifndef EXTI_INTERFACE_H_
+#define EXTI_INTERFACE_H_
 
 /**
  * @defgroup EXTI_Configurations EXTI Line Configurations
@@ -147,4 +147,5 @@ Std_ReturnType EXTI_SetTrigger(u8 Copy_Line, u8 Copy_Mode);
 /** @} */ // End of EXTI_Control
 
 
-#endif /**< EXTI_INTERFACE_H */
+
+#endif /**< EXTI_INTERFACE_H_ */

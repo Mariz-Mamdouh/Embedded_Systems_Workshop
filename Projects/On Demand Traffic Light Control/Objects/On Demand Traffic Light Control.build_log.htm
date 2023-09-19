@@ -36,8 +36,8 @@ EXTI_program.c(15): warning: In file included from...
     AFIO_REMAP_CUSTOM,   /**< Custom remap (user-defined) */ 
                      ^~
 ./AFIO_interface.h(64): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */ // End of AFIO_Remap_Options group
-          ^
+/** @} */  // End of AFIO_Remap_Options group
+           ^
 EXTI_program.c(17): warning: In file included from...
 ./EXTI_interface.h(58): warning: // comments are not allowed in this language [-Wcomment]
 /** @} */  // EXTI_Configurations
@@ -50,6 +50,9 @@ EXTI_program.c(19): warning: In file included from...
 #define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
                               ^
 EXTI_program.c(19): warning: In file included from...
+./EXTI_config.h(39): error: use of undeclared identifier 'EXTI_LINE_DISNBLED'
+        .LineEnabled   = EXTI_LINE_DISNBLED,
+                         ^
 ./EXTI_config.h(44): error: use of undeclared identifier 'INVALID_VALUE'
         .GPIO_PortMap  = EXTI_GPIO_NONE,
                          ^
@@ -64,13 +67,9 @@ EXTI_program.c(19): warning: In file included from...
 #define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
                               ^
 EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(58): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
+./EXTI_config.h(58): warning: designated initializers are a C99 feature [-Wc99-designator]
+        .GPIO_PortMap  = EXTI_PORTMAP_GPIOA,
+        ^
 ./EXTI_config.h(65): error: use of undeclared identifier 'INVALID_VALUE'
         .GPIO_PortMap  = EXTI_GPIO_NONE,
                          ^
@@ -170,9 +169,30 @@ EXTI_program.c(48): error: use of undeclared identifier 'INVALID_VALUE'
 EXTI_program.c(70): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
     u8 PortMap = 0;
        ^
-8 warnings and 17 errors generated.
+9 warnings and 17 errors generated.
 compiling EXTI_program.c...
-".\Objects\On Demand Traffic Light Control.axf" - 17 Error(s), 8 Warning(s).
+main.c(6): warning: In file included from...
+./GPIO_interface.h(56): warning: // comments are not allowed in this language [-Wcomment]
+/** @} */ // End of GPIO_Values group
+          ^
+main.c(9): warning: In file included from...
+./EXTI_interface.h(58): warning: // comments are not allowed in this language [-Wcomment]
+/** @} */  // EXTI_Configurations
+           ^
+main.c(10): warning: In file included from...
+./AFIO_interface.h(61): warning: commas at the end of enumerator lists are a C99-specific feature [-Wc99-extensions]
+    AFIO_REMAP_CUSTOM,   /**< Custom remap (user-defined) */ 
+                     ^~
+./AFIO_interface.h(64): warning: // comments are not allowed in this language [-Wcomment]
+/** @} */  // End of AFIO_Remap_Options group
+           ^
+main.c(11): warning: In file included from...
+./STK_interface.h(121): warning: no newline at end of file [-Wnewline-eof]
+#endif /**< STK_INTERFACE_H */ 
+                               ^
+5 warnings generated.
+compiling main.c...
+".\Objects\On Demand Traffic Light Control.axf" - 17 Error(s), 14 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -204,7 +224,7 @@ Package Vendor: Keil
       Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/system_stm32f10x.c
 Target not created.
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
