@@ -1,31 +1,33 @@
-/****************************************************************/
-/******* Author    : Mariz Mamdouh              *****************/
-/******* Date      : 12 Sep 2023                *****************/
-/******* Version   : 0.1                        *****************/
-/******* File Name : AFIO_program.c             *****************/
-/****************************************************************/
+/****************************************************/
+/*********   Author    : Mariz Mamdouh     **********/
+/*********   Date      : 13 Sept 2023      **********/
+/*********   Version   : 0.1               **********/
+/*********   File name : AFIO_program.c    **********/
+/****************************************************/
 
-/*****************************< LIB *****************************/
+/************************< LIB ***********************/
 #include "STD_TYPES.h"
-#include <stdbool.h>
 #include "BIT_MATH.h"
-/*****************************< MCAL *****************************/
+#include <stdbool.h>
+/************************< MCAL **********************/
 #include "AFIO_interface.h"
 #include "AFIO_private.h"
 #include "AFIO_config.h"
+
 /*****************************< Function Implementations *****************************/
-Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig) 
+
+Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig)
 {
     /**< Check if the remapConfig is within valid range */ 
-    if (Copy_RemapConfig > AFIO_REMAP_CUSTOM)
+    if(Copy_RemapConfig > AFIO_REMAP_CUSTOM)
     {
-        return E_NOT_OK;  /**< Invalid configuration */ 
+        return E_NOT_OK;
     }
 
-    // Configure the remap settings
-    AFIO->MAPR &= ~AFIO_MAPR_SWJ_CFG_Msk;  /**< Clear SWJ_CFG bits */ 
+    /**< Configure the remap settings */
+    AFIO->MAPR &= ~(AFIO_MAPR_SWJ_CFG_MSK);
 
-    switch (Copy_RemapConfig) 
+    switch (Copy_RemapConfig)
     {
         case AFIO_REMAP_NONE:
             /**< No remap, SWJ ON without trace (default) */ 
@@ -35,72 +37,41 @@ Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig)
             AFIO->MAPR |= AFIO_MAPR_SWJ_CFG_001;
             break;
         case AFIO_REMAP_PARTIAL:
-            /**< JTAG-DP Disabled and SW-DP Enabled */ 
+            /**< JTAG-DP Disabled and SW-DP Enabled */
             AFIO->MAPR |= AFIO_MAPR_SWJ_CFG_010;
             break;
         case AFIO_REMAP_CUSTOM:
             /**< Custom remap (user-defined) */ 
             break;
         default:
-            return E_NOT_OK;  /**< Invalid configuration */ 
+            return E_NOT_OK;
     }
-
-    return E_OK;  /**<  Configuration successful */
+    return E_OK;
 }
 
 Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig)
 {
-    /**< Check if the DebugConfig value is within a valid range */ 
-    if (Copy_DebugConfig > AFIO_MAPR_SWJ_CFG_Msk)
+    /**< Check if the DebugConfig value is within a valid range */
+    if(Copy_DebugConfig > AFIO_MAPR_SWJ_CFG_MSK)
     {
-        return E_NOT_OK;  /**< Invalid DebugConfig value */ 
+        return E_NOT_OK;
     }
 
     /**< Clear the SWJ_CFG bits in the AFIO_MAPR register */ 
-    AFIO->MAPR &= ~AFIO_MAPR_SWJ_CFG_Msk;
+    AFIO->MAPR &= ~(AFIO_MAPR_SWJ_CFG_MSK);
 
     /**< Set the SWJ_CFG bits with the provided DebugConfig value */ 
-    AFIO->MAPR |= (Copy_DebugConfig & AFIO_MAPR_SWJ_CFG_Msk);
+    AFIO->MAPR |= (Copy_DebugConfig & AFIO_MAPR_SWJ_CFG_MSK);
 
-    return E_OK;  /**< Configuration successful */ 
-}
-
-void AFIO_MAPR_ADC2ETRGREGRemap(bool Copy_Enable) 
-{
-    u32 regValue = AFIO->MAPR;
-    if (Copy_Enable) 
-    {
-        regValue |= AFIO_MAPR_ADC2_ETRGREG_Msk;
-    } 
-    else 
-    {
-        regValue &= ~AFIO_MAPR_ADC2_ETRGREG_Msk;
-    }
-    AFIO->MAPR = regValue;
-}
-
-void AFIO_MAPR_ADC2ETRGINJRemap(bool Copy_Enable) 
-{
-    u32 regValue = AFIO->MAPR;
-    if (Copy_Enable)
-    {
-        regValue |= AFIO_MAPR_ADC2_ETRGINJ_Msk;
-    }
-    else 
-    {
-        regValue &= ~AFIO_MAPR_ADC2_ETRGINJ_Msk;
-    }
-    AFIO->MAPR = regValue;
+    return E_OK;
 }
 
 Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap)
 {
-    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
-
     /**< Check if the provided EXTI line or PortMap value is out of range */ 
-    if (Copy_Line > 15 || Copy_PortMap > 2)
+    if(Copy_Line > 15 || Copy_PortMap > 2)
     {
-        return Local_FunctionStatus;
+        return E_NOT_OK;
     }
 
     /**< Calculate the index of the EXTI control register for the specified line */ 
@@ -115,9 +86,7 @@ Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap)
     /**< Set the new PortMap value for the EXTI line within the EXTI control register */ 
     AFIO->EXTICR[Local_RegIndex] |= Copy_PortMap << (Copy_Line * 4);
 
-    /**< Configuration is successful, set the function status to E_OK */ 
-    Local_FunctionStatus = E_OK;
-
-    return Local_FunctionStatus;
+    return E_OK;
 }
+
 /*****************************< End of Function Implementations *****************************/

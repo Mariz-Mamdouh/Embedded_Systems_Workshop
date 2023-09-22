@@ -52,7 +52,7 @@
           <OutputName>On Demand Traffic Light Control</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -260,17 +260,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -280,7 +280,7 @@
                 <Size>0x10000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -323,7 +323,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>4</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
@@ -385,6 +385,11 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
               <FileName>BIT_MATH.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\BIT_MATH.h</FilePath>
@@ -413,26 +418,6 @@
               <FileName>GPIO_program.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\GPIO_program.c</FilePath>
-            </File>
-            <File>
-              <FileName>NVIC_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\NVIC_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>NVIC_interface.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\NVIC_interface.h</FilePath>
-            </File>
-            <File>
-              <FileName>NVIC_private.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\NVIC_private.h</FilePath>
-            </File>
-            <File>
-              <FileName>NVIC_program.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\NVIC_program.c</FilePath>
             </File>
             <File>
               <FileName>RCC_config.h</FileName>
@@ -475,69 +460,14 @@
               <FilePath>.\STK_program.c</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
+              <FileName>LED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FilePath>.\LED.c</FilePath>
             </File>
             <File>
-              <FileName>SCB_config.h</FileName>
+              <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\SCB_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>SCB_interface.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SCB_interface.h</FilePath>
-            </File>
-            <File>
-              <FileName>SCB_private.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SCB_private.h</FilePath>
-            </File>
-            <File>
-              <FileName>SCB_program.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SCB_program.c</FilePath>
-            </File>
-            <File>
-              <FileName>AFIO_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\AFIO_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>AFIO_interface.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\AFIO_interface.h</FilePath>
-            </File>
-            <File>
-              <FileName>AFIO_private.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\AFIO_private.h</FilePath>
-            </File>
-            <File>
-              <FileName>AFIO_program.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\AFIO_program.c</FilePath>
-            </File>
-            <File>
-              <FileName>EXTI_config.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EXTI_config.h</FilePath>
-            </File>
-            <File>
-              <FileName>EXTI_interface.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EXTI_interface.h</FilePath>
-            </File>
-            <File>
-              <FileName>EXTI_private.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EXTI_private.h</FilePath>
-            </File>
-            <File>
-              <FileName>EXTI_program.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\EXTI_program.c</FilePath>
+              <FilePath>.\LED.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -17,115 +17,115 @@
 #include "SCB_interface.h"
 
 /*****************************< Function Implementations *****************************/
-Std_ReturnType Mcal_NVIC_EnableIRQ(IRQn_Type Copy_IRQn)
+Std_ReturnType MCAL_NVIC_EnableIRQ(IRQn_Type Copy_IRQn)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
     if(Copy_IRQn < 32)
     {
         NVIC_ISER0 = (1U << Copy_IRQn);
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if(Copy_IRQn < 64)
     {
         NVIC_ISER1 = (1U << (Copy_IRQn - 32));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if (Copy_IRQn < 96)
     {
         NVIC_ISER2 = (1U << (Copy_IRQn - 64));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else
     {
-        local_FunctionStatus=E_NOT_OK;
+        Local_FunctionStatus=E_NOT_OK;
     }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_NVIC_DisableIRQ(IRQn_Type Copy_IRQn)
+Std_ReturnType MCAL_NVIC_DisableIRQ(IRQn_Type Copy_IRQn)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
     if(Copy_IRQn < 32)
     {
         NVIC_ICER0 = (1U << Copy_IRQn);
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if(Copy_IRQn < 64)
     {
         NVIC_ICER1 = (1U << (Copy_IRQn - 32));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if (Copy_IRQn < 96)
     {
         NVIC_ICER2 = (1U << (Copy_IRQn - 64));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else
     {
-        local_FunctionStatus=E_NOT_OK;
+        Local_FunctionStatus=E_NOT_OK;
     }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_NVIC_SetPendingIRQ(IRQn_Type Copy_IRQn)
+Std_ReturnType MCAL_NVIC_SetPendingIRQ(IRQn_Type Copy_IRQn)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
     if(Copy_IRQn < 32)
     {
         NVIC_ISPR0 = (1U << Copy_IRQn);
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if(Copy_IRQn < 64)
     {
         NVIC_ISPR1 = (1U << (Copy_IRQn - 32));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if (Copy_IRQn < 96)
     {
         NVIC_ISPR2 = (1U << (Copy_IRQn - 64));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else
     {
-        local_FunctionStatus=E_NOT_OK;
+        Local_FunctionStatus=E_NOT_OK;
     }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_NVIC_ClearPendingIRQ(IRQn_Type Copy_IRQn)
+Std_ReturnType MCAL_NVIC_ClearPendingIRQ(IRQn_Type Copy_IRQn)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
     if(Copy_IRQn < 32)
     {
         NVIC_ICPR0 = (1U << Copy_IRQn);
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if(Copy_IRQn < 64)
     {
         NVIC_ICPR1 = (1U << (Copy_IRQn - 32));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else if (Copy_IRQn < 96)
     {
         NVIC_ICPR2 = (1U << (Copy_IRQn - 64));
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
     }
     else
     {
-        local_FunctionStatus=E_NOT_OK;
+        Local_FunctionStatus=E_NOT_OK;
     }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendingFlag)
+Std_ReturnType MCAL_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendingFlag)
 {
     Std_ReturnType Local_FunctionStatus = E_NOT_OK;
     if(Copy_ReturnPendingFlag != NULL)
@@ -179,7 +179,7 @@ Std_ReturnType Mcal_NVIC_GetPendingIRQ(IRQn_Type Copy_IRQn, u8 *Copy_ReturnPendi
     return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
+Std_ReturnType MCAL_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
 {
     Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
@@ -189,6 +189,9 @@ Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
     }
     if(Copy_Priority <= NVIC_MAX_PRIORITY)
     {
+				/**< Set the group and sub-group priority for interrupt handling in SCB_AIRCR register */
+        MCAL_SCB_SetPriorityGrouping(NVIC_0GROUP_16SUB);
+			
         /**< Calculate the register index (IPRx) and bit position within the register */ 
         u32 RegisterIndex = Copy_IRQn / 4;     /**< Divide by 4 to get the register index */  
         u32 BitPosition = (Copy_IRQn % 4) * 8; /**< Multiply by 8 to get the bit position */
@@ -197,11 +200,8 @@ Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
         NVIC_IPR_BASE_ADDRESS[RegisterIndex] &= ~(0xFF << BitPosition);
 
         /**< Set the priority in the appropriate IPRx register */ 
-        NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (Copy_Priority << BitPosition);
+        NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (Copy_Priority << (BitPosition << 4));
         
-        /**< Set the group and sub-group priority for interrupt handling in SCB_AIRCR register */
-        SCB_SetPriorityGrouping(NVIC_0GROUP_16SUB);
-
         Local_FunctionStatus = E_OK;
     }
 
@@ -211,7 +211,7 @@ Std_ReturnType Mcal_NVIC_xSetPriority(IRQn_Type Copy_IRQn, u8 Copy_Priority)
 
 Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority, u8 Copy_SubPriority)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
     u8 NVIC_MAX_Group_Priority;
     u8 NVIC_MAX_Sub_Priority;
@@ -231,20 +231,20 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
         NVIC_MAX_Group_Priority = NONE;
         NVIC_MAX_Sub_Priority = 15;
     #else 
-        #error "Invalid PRIORITY_GROUPING value. Please choose from _16GROUP_0SUB, _8GROUP_2SUB, _4GROUP_4SUB, _2GROUP_8SUB, or _0GROUP_16SUB."
+        #error "Invalid PRIORITY_GROUPING value. Please choose from NVIC_16GROUP_0SUB, NVIC_8GROUP_2SUB, NVIC_4GROUP_4SUB, NVIC_2GROUP_8SUB, or NVIC_0GROUP_16SUB."
     #endif /**< PRIROITY_GROUPING */
 
     if(Copy_GroupPriority > NVIC_MAX_Group_Priority || Copy_SubPriority > NVIC_MAX_Sub_Priority)
     {
-        return local_FunctionStatus;
+        return Local_FunctionStatus;
     }
     if(Copy_IRQn > NUMBER_OF_INTERRUPTS)
     {
-        return local_FunctionStatus;
+        return Local_FunctionStatus;
     }
 
     /**< Configure the priority grouping for the Nested Vectored Interrupt Controller (NVIC) */
-    SCB_SetPriorityGrouping(PRIORITY_GROUPING);
+    MCAL_SCB_SetPriorityGrouping(PRIORITY_GROUPING);
 
     /**< Calculate the Priority value will be added to the IPRx */
     u8 Local_Priority = (Copy_SubPriority | (Copy_GroupPriority << (PRIORITY_GROUPING - NVIC_16GROUP_0SUB) / 0x100));
@@ -265,16 +265,16 @@ Std_ReturnType MCAL_NVIC_vSetPriority(IRQn_Type Copy_IRQn, u8 Copy_GroupPriority
     /**< Write the modified value back to the IPR register */ 
     NVIC_IPR_BASE_ADDRESS[RegisterIndex] = (RegValue << 4);
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 
-Std_ReturnType Mcal_NVIC_xGetPriority(IRQn_Type Copy_IRQn, u8 *Copy_Priority)
+Std_ReturnType MCAL_NVIC_xGetPriority(IRQn_Type Copy_IRQn, u8 *Copy_Priority)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
 
     if (Copy_IRQn > NUMBER_OF_INTERRUPTS)
     {
-        return local_FunctionStatus;
+        return Local_FunctionStatus;
     }
 
     /**< Calculate the register index (IPRx) and bit position within the register */
@@ -288,8 +288,8 @@ Std_ReturnType Mcal_NVIC_xGetPriority(IRQn_Type Copy_IRQn, u8 *Copy_Priority)
     /**< Extract the priority from the IPRx register */
     *Copy_Priority = ((PriorityRegister[BitIndex]) >> (BitPosition)) & 0xFF;
 
-    local_FunctionStatus = E_OK;
+    Local_FunctionStatus = E_OK;
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 /*****************************< End of Function Implementations *****************************/

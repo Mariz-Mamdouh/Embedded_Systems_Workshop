@@ -78,7 +78,7 @@ typedef enum
  * @param[in] Copy_RemapConfig The configuration value for AF remap and debug I/O.
  * @return Std_ReturnType Returns E_OK if the configuration is successful, or E_NOT_OK if an error occurred.
  */
-Std_ReturnType AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
+Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
 
 /**
  * @brief Configure debug port settings.
@@ -102,7 +102,7 @@ Std_ReturnType AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig);
  * }
  * @endcode
  */
-Std_ReturnType AFIO_SetDebugPort(u8 Copy_DebugConfig);
+Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig);
 
 /**
  * @brief Configures EXTI (External Interrupt) line mapping for a specific GPIO port.
@@ -130,7 +130,7 @@ Std_ReturnType AFIO_SetDebugPort(u8 Copy_DebugConfig);
  * }
  * @endcode
  */
-Std_ReturnType AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap);
+Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap);
 
 /** @} */ // End of AFIO_Functions group
 

@@ -30,19 +30,19 @@
  * - EXTI_PORTMAP_GPIOB: Map EXTI line to GPIO Port B.
  * - EXTI_PORTMAP_GPIOC: Map EXTI line to GPIO Port C.
  */
-EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
-
+EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] =
+ {
     /**< Configuration for EXTI Line 0 */
     {
         .GPIO_PortMap  = EXTI_GPIO_NONE,
         .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_ENABLED,
+        .LineEnabled   = EXTI_LINE_DISABLED,
     },
 
     /* Configuration for EXTI Line 1 */
     {
         .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_FALLING_EDGE,
+        .TriggerType   = EXTI_BOTH_EDGES,
         .LineEnabled   = EXTI_LINE_DISABLED,
     },
 

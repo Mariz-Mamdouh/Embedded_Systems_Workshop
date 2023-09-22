@@ -14,7 +14,7 @@
 #include "SCB_config.h"
 
 /*****************************< Function Implementations *****************************/
-void SCB_SetPriorityGrouping(u32 Copy_PriorityGrouping)
+void MCAL_SCB_SetPriorityGrouping(u32 Copy_PriorityGrouping)
 {
     /* Clear the PRIGROUP bits in AIRCR and set them to the configured value */
     SCB_AIRCR = Copy_PriorityGrouping;

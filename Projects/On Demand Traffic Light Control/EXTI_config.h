@@ -1,11 +1,11 @@
-/****************************************************************/
-/******* Author    : Mariz Mamdouh              *****************/
-/******* Date      : 9 Sep 2023                 *****************/
-/******* Version   : 0.1                        *****************/
-/******* File Name : EXTI_config.h              *****************/
-/****************************************************************/
-#ifndef EXTI_CONFIG_H_
-#define EXTI_CONFIG_H_
+/****************************************************/
+/*********   Author    : Mariz Mamdouh     **********/
+/*********   Date      : 9 Sept 2023       **********/
+/*********   Version   : 0.1               **********/
+/*********   File name : EXTI_config.h     **********/
+/****************************************************/
+#ifndef EXTI_CONFIG_H
+#define EXTI_CONFIG_H
 
 /**
  * @brief EXTI Configuration Array
@@ -30,19 +30,19 @@
  * - EXTI_PORTMAP_GPIOB: Map EXTI line to GPIO Port B.
  * - EXTI_PORTMAP_GPIOC: Map EXTI line to GPIO Port C.
  */
-EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
-
+EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] =
+ {
     /**< Configuration for EXTI Line 0 */
     {
         .GPIO_PortMap  = EXTI_GPIO_NONE,
         .TriggerType   = EXTI_BOTH_EDGES,
-        .LineEnabled   = EXTI_LINE_DISNBLED,
+        .LineEnabled   = EXTI_LINE_DISABLED,
     },
 
     /* Configuration for EXTI Line 1 */
     {
         .GPIO_PortMap  = EXTI_GPIO_NONE,
-        .TriggerType   = EXTI_FALLING_EDGE,
+        .TriggerType   = EXTI_BOTH_EDGES,
         .LineEnabled   = EXTI_LINE_DISABLED,
     },
 
@@ -55,8 +55,8 @@ EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
     
     /* Configuration for EXTI Line 3 */
     {
-        .GPIO_PortMap  = EXTI_PORTMAP_GPIOA,
-        .TriggerType   = EXTI_BOTH_EDGES,
+        .GPIO_PortMap  = EXTI_PORTMAP_GPIOB,
+        .TriggerType   = EXTI_RISING_EDGE,
         .LineEnabled   = EXTI_LINE_ENABLED,
     },
     
@@ -145,5 +145,4 @@ EXTI_Configuration_t EXTI_Configurations[EXTI_LINES_COUNT] = {
     },
     
 };
-
-#endif /**< EXTI_CONFIG_H_ */
+#endif /**< EXTI_CONFIG_H */

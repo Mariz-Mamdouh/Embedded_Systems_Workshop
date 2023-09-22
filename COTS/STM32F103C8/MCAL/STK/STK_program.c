@@ -15,7 +15,7 @@
 #include "STK_config.h"
 
 /*****************************< Function Implementations *****************************/
-void STK_Init(u32 Copy_Ticks)
+void MCAL_STK_Init(u32 Copy_Ticks)
 {
     /**< Disable SysTick timer */
     STK->CTRL &= ~(STK_CTRL_ENABLE_MASK);
@@ -43,19 +43,19 @@ void STK_Init(u32 Copy_Ticks)
 
 }
 
-void STK_Start(void)
+void MCAL_STK_Start(void)
 {
     /**< Enable SysTick timer */
     STK->CTRL |= STK_CTRL_ENABLE_MASK;
 }
 
-void STK_Stop(void)
+void MCAL_STK_Stop(void)
 {
     /**< Disable SysTick timer */
     STK->CTRL &= ~(STK_CTRL_ENABLE_MASK);
 }
 
-void STK_Reset(void)
+void MCAL_STK_Reset(void)
 {
     /**< Disable SysTick timer */
     STK->CTRL &= ~(STK_CTRL_ENABLE_MASK);
@@ -70,13 +70,13 @@ void STK_Reset(void)
     STK->CTRL &= ~(STK_CTRL_COUNTFLAG_MASK);
 }
 
-u32 STK_GetRemainingCounts(void)
+u32 MCAL_STK_GetRemainingCounts(void)
 {
     /* Get the current value of the SysTick timer */
     return STK->VAL;
 }
 
-u32 STK_GetElapsedCounts(void)
+u32 MCAL_STK_GetElapsedCounts(void)
 {
     static u32 Local_PreviousValue = 0;    /**< Store the previous SysTick timer value */
     u32 Local_CurrentValue = STK->VAL;     /**< Get the current SysTick timer value */
@@ -100,9 +100,9 @@ u32 STK_GetElapsedCounts(void)
     return Local_ElapsedTicks;
 }
 
-Std_ReturnType STK_SetBusyWait(u32 Copy_MicroSeconds)
+Std_ReturnType MCAL_STK_SetBusyWait(u32 Copy_MicroSeconds)
 {
-    Std_ReturnType local_FunctionStatus = E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
     /**< Calculate the number of ticks required for the given microseconds */
     u32 Local_TicksRequired = (Copy_MicroSeconds * (STK_AHB_CLK / 1000000));
@@ -125,14 +125,14 @@ Std_ReturnType STK_SetBusyWait(u32 Copy_MicroSeconds)
         /**< Reset the timer value */
         STK->VAL = 0;
 
-        local_FunctionStatus = E_OK;
+        Local_FunctionStatus = E_OK;
     }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
-Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds)
+Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds)
 {
-    Std_ReturnType local_FunctionStatus = E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus = E_NOT_OK;
 
     /**< Calculate the number of ticks required to wait for the specified number of milliseconds */
     u32 Local_u32Ticks = (u32)((Copy_Milliseconds * STK_AHB_CLK) / 1000.0);
@@ -155,9 +155,9 @@ Std_ReturnType STK_SetDelay_ms(f32 Copy_Milliseconds)
         /**< Reset the timer value */
         STK->VAL = 0;
 
-        local_FunctionStatus = E_OK;
+        Local_FunctionStatus = E_OK;
     }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 /*****************************< End of Function Implementations *****************************/

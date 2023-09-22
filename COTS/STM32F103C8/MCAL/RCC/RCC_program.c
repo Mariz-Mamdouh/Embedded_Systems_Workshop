@@ -15,9 +15,9 @@
 #include "RCC_config.h"
 
 /*****************************< Function Implementations *****************************/
-Std_ReturnType Mcal_Rcc_InitSysClock(void)
+Std_ReturnType MCAL_RCC_InitSysClock(void)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
     #if RCC_SYSCLK==RCC_HSE
         
         /**< select which External CLK will be entered to the system*/
@@ -38,7 +38,7 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         /**< Select the HSE as a SYSCLK */
         RCC_CFGR=0x00000001;
 
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
 
     #elif RCC_SYSCLK==RCC_HSI
 
@@ -51,7 +51,7 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         /**< Select the HSI as a SYSCLK */
         RCC_CFGR=0x00000000;
 
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
 
     #elif RCC_SYSCLK==RCC_PLL
 
@@ -174,7 +174,7 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
                  SET_BIT(RCC_CFGR,RCC_CFGR_PLLMUL3);
                  break;
             default:
-                local_FunctionStatus=E_NOT_OK;
+                Local_FunctionStatus=E_NOT_OK;
         }
 
         /**< Enable PLL*/
@@ -187,72 +187,72 @@ Std_ReturnType Mcal_Rcc_InitSysClock(void)
         CLR_BIT(RCC_CFGR,RCC_CFGR_SW0);
         SET_BIT(RCC_CFGR,RCC_CFGR_SW1);
 
-        local_FunctionStatus=E_OK;
+        Local_FunctionStatus=E_OK;
 
     #else 
         #error "Wrong choice!"
 
     #endif /**< RCC_SYSCLK*/
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
-Std_ReturnType Mcal_Rcc_EnablePeripheral(u8 Copy_PeripheralId,u8 Copy_BusId)
+Std_ReturnType MCAL_RCC_EnablePeripheral(u8 Copy_PeripheralId,u8 Copy_BusId)
 {
-     Std_ReturnType local_FunctionStatus= E_NOT_OK;
+     Std_ReturnType Local_FunctionStatus= E_NOT_OK;
      switch(Copy_BusId)
      {
          /**< Enable the peripheral on the AHB bus. */
         case RCC_AHB:
             SET_BIT(RCC_AHBENR,Copy_PeripheralId);
-            local_FunctionStatus= E_OK;
+            Local_FunctionStatus= E_OK;
             break;
 
         /**< Enable the peripheral on the APB1 bus. */
         case RCC_APB1:
             SET_BIT(RCC_APB1ENR,Copy_PeripheralId);
-            local_FunctionStatus= E_OK;
+            Local_FunctionStatus= E_OK;
             break;
 
         /**< Enable the peripheral on the APB2 bus. */
         case RCC_APB2:
             SET_BIT(RCC_APB2ENR,Copy_PeripheralId);
-            local_FunctionStatus= E_OK;
+            Local_FunctionStatus= E_OK;
             break;
 
         default:
-            local_FunctionStatus= E_NOT_OK;
+            Local_FunctionStatus= E_NOT_OK;
             break;
      }
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 
 }
-Std_ReturnType Mcal_Rcc_DisablePeripheral(u8 Copy_PeripheralId,u8 Copy_BusId)
+Std_ReturnType MCAL_RCC_DisablePeripheral(u8 Copy_PeripheralId,u8 Copy_BusId)
 {
-    Std_ReturnType local_FunctionStatus=E_NOT_OK;
+    Std_ReturnType Local_FunctionStatus=E_NOT_OK;
      switch(Copy_BusId)
      {
         /**< Disable the peripheral on the AHB bus. */
         case RCC_AHB:
             CLR_BIT(RCC_AHBENR,Copy_PeripheralId);
-            local_FunctionStatus=E_OK;
+            Local_FunctionStatus=E_OK;
             break;
 
         /**< Disable the peripheral on the APB1 bus. */
         case RCC_APB1:
             CLR_BIT(RCC_APB1ENR,Copy_PeripheralId);
-            local_FunctionStatus=E_OK;
+            Local_FunctionStatus=E_OK;
             break;
 
         /**< Disable the peripheral on the APB2 bus. */
         case RCC_APB2:
             CLR_BIT(RCC_APB2ENR,Copy_PeripheralId);
-            local_FunctionStatus=E_OK;
+            Local_FunctionStatus=E_OK;
             break;
 
         default:
-            local_FunctionStatus=E_NOT_OK;
+            Local_FunctionStatus=E_NOT_OK;
             break;
      }
 
-    return local_FunctionStatus;
+    return Local_FunctionStatus;
 }
 /*****************************< End of Function Implementations *****************************/

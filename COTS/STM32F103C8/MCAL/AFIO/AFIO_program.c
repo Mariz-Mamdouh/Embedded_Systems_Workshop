@@ -16,7 +16,7 @@
 
 /*****************************< Function Implementations *****************************/
 
-Std_ReturnType AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig)
+Std_ReturnType MCAL_AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig)
 {
     /**< Check if the remapConfig is within valid range */ 
     if(Copy_RemapConfig > AFIO_REMAP_CUSTOM)
@@ -49,7 +49,7 @@ Std_ReturnType AFIO_SetRemap(AFIO_RemapConfig_t Copy_RemapConfig)
     return E_OK;
 }
 
-Std_ReturnType AFIO_SetDebugPort(u8 Copy_DebugConfig)
+Std_ReturnType MCAL_AFIO_SetDebugPort(u32 Copy_DebugConfig)
 {
     /**< Check if the DebugConfig value is within a valid range */
     if(Copy_DebugConfig > AFIO_MAPR_SWJ_CFG_MSK)
@@ -66,7 +66,7 @@ Std_ReturnType AFIO_SetDebugPort(u8 Copy_DebugConfig)
     return E_OK;
 }
 
-Std_ReturnType AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap)
+Std_ReturnType MCAL_AFIO_SetEXTIConfiguration(u8 Copy_Line, u8 Copy_PortMap)
 {
     /**< Check if the provided EXTI line or PortMap value is out of range */ 
     if(Copy_Line > 15 || Copy_PortMap > 2)

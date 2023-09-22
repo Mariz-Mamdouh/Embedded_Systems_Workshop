@@ -1,6 +1,7 @@
 {
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
-        "nvic_interface.h": "c"
+        "nvic_interface.h": "c",
+        "LED.C": "cpp"
     }
 }

@@ -21,6 +21,6 @@
  * @note The "Copy_PriorityGrouping" parameter should be one of the predefined values for priority grouping.
  * @see SCB_PRIORITY_GROUPING
  */
-void SCB_SetPriorityGrouping(u32 Copy_PriorityGrouping);
+void MCAL_SCB_SetPriorityGrouping(u32 Copy_PriorityGrouping);
 
 #endif /**< SCB_INTERFACE_H */

@@ -17,182 +17,37 @@ Library Manager: ArmAr.exe V6.19
 Hex Converter:   FromElf.exe V6.19
 CPU DLL:         SARMCM3.DLL V5.38.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      UL2CM3.DLL V1.164.8.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.1.0.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\Workshop\Embedded_Systems_Workshop\Projects\On Demand Traffic Light Control\On Demand Traffic Light Control.uvprojx
-Project File Date:  09/18/2023
+Project File Date:  09/22/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-EXTI_program.c(13): warning: In file included from...
-./GPIO_interface.h(56): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */ // End of GPIO_Values group
-          ^
-EXTI_program.c(15): warning: In file included from...
-./AFIO_interface.h(61): warning: commas at the end of enumerator lists are a C99-specific feature [-Wc99-extensions]
-    AFIO_REMAP_CUSTOM,   /**< Custom remap (user-defined) */ 
-                     ^~
-./AFIO_interface.h(64): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */  // End of AFIO_Remap_Options group
-           ^
-EXTI_program.c(17): warning: In file included from...
-./EXTI_interface.h(58): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */  // EXTI_Configurations
-           ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(37): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(39): error: use of undeclared identifier 'EXTI_LINE_DISNBLED'
-        .LineEnabled   = EXTI_LINE_DISNBLED,
-                         ^
-./EXTI_config.h(44): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(51): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(58): warning: designated initializers are a C99 feature [-Wc99-designator]
-        .GPIO_PortMap  = EXTI_PORTMAP_GPIOA,
-        ^
-./EXTI_config.h(65): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(72): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(79): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(86): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(93): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(100): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(107): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(114): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(121): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(128): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(135): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(19): warning: In file included from...
-./EXTI_config.h(142): error: use of undeclared identifier 'INVALID_VALUE'
-        .GPIO_PortMap  = EXTI_GPIO_NONE,
-                         ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(23): warning: variable declaration in for loop is a C99-specific feature [-Wc99-extensions]
-    for (u8 Line = 0; Line < EXTI_LINES_COUNT; Line++)
-         ^
-EXTI_program.c(23): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
-EXTI_program.c(47): warning: // comments are not allowed in this language [-Wcomment]
-            // Check if GPIO port configuration is available
-            ^
-EXTI_program.c(48): error: use of undeclared identifier 'INVALID_VALUE'
-            if (EXTI_Configurations[Line].GPIO_PortMap != EXTI_GPIO_NONE)
-                                                          ^
-./EXTI_interface.h(51): note: expanded from macro 'EXTI_GPIO_NONE'
-#define EXTI_GPIO_NONE      ((INVALID_VALUE)-1) /**< A special value indicating no GPIO port is mapped to the EXTI line. */
-                              ^
-EXTI_program.c(70): warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
-    u8 PortMap = 0;
-       ^
-9 warnings and 17 errors generated.
-compiling EXTI_program.c...
-main.c(6): warning: In file included from...
-./GPIO_interface.h(56): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */ // End of GPIO_Values group
-          ^
-main.c(9): warning: In file included from...
-./EXTI_interface.h(58): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */  // EXTI_Configurations
-           ^
-main.c(10): warning: In file included from...
-./AFIO_interface.h(61): warning: commas at the end of enumerator lists are a C99-specific feature [-Wc99-extensions]
-    AFIO_REMAP_CUSTOM,   /**< Custom remap (user-defined) */ 
-                     ^~
-./AFIO_interface.h(64): warning: // comments are not allowed in this language [-Wcomment]
-/** @} */  // End of AFIO_Remap_Options group
-           ^
-main.c(11): warning: In file included from...
-./STK_interface.h(121): warning: no newline at end of file [-Wnewline-eof]
-#endif /**< STK_INTERFACE_H */ 
-                               ^
+main.c(50): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+                        for(u8 x=0;x<100;x++)
+                            ^
+main.c(72): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+                                                for(u8 i=0;i<10;i++)
+                                                    ^
+main.c(89): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+                                                for(u8 j=0;j<10;j++)
+                                                    ^
+main.c(111): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+                        for(u8 i=0;i<10;i++)
+                            ^
+main.c(128): warning: GCC does not allow variable declarations in for loop initializers before C99 [-Wgcc-compat]
+                        for(u8 j=0;j<10;j++)
+                            ^
 5 warnings generated.
 compiling main.c...
-".\Objects\On Demand Traffic Light Control.axf" - 17 Error(s), 14 Warning(s).
+linking...
+Program Size: Code=4576 RO-data=252 RW-data=0 ZI-data=1632  
+FromELF: creating hex file...
+".\Objects\On Demand Traffic Light Control.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -220,10 +75,9 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Include file:  RTE_Driver/Config/RTE_Device.h
-      Source file:   Device/Source/system_stm32f10x.c
-Target not created.
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
