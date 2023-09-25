@@ -66,7 +66,7 @@ int main(void)
 					}
 					
 					/*< Short Press*/
-					if(CurrentValue == 0)
+					else if(CurrentValue == 0)
 					{
 						HAL_LED_Off(GPIO_PORTA,GPIO_PIN5);
 						HAL_LED_Off(GPIO_PORTB,GPIO_PIN7);
