@@ -23,9 +23,9 @@ We propose the development of a Simulated Traffic Management System that efficie
 
 ### Hardware and Software Requirements
 #### Hardware Requirements (Simulated within Proteus)
-1) STM32F103C8 microcontroller simulation.
-2) Virtual push button for pedestrian requests.
-3) Virtual LEDs for traffic lights - Red, Yellow, and Green for cars and pedestrians.
+* STM32F103C8 microcontroller simulation.
+* Virtual push button for pedestrian requests.
+* Virtual LEDs for traffic lights - Red, Yellow, and Green for cars and pedestrians.
 
 #### Software Requirements
 * In normal mode (simulation):
@@ -38,49 +38,43 @@ We propose the development of a Simulated Traffic Management System that efficie
   * Specific sequences for pedestrian crosswalk requests.
   
 ### System Design
-  Define system layers.
-  Define system drivers.
-  Place each driver into the appropriate layer following SOLID principles.
-  Define APIs for each driver with documentation.
-  Define new data types for drivers.
-  Define error handling and reporting mechanisms.
+  * Define system layers.
+  * Define system drivers.
+  * Place each driver into the appropriate layer following SOLID principles.
+  * Define APIs for each driver with documentation.
+  * Define new data types for drivers.
+  * Define error handling and reporting mechanisms.
   
 ### Development Environment
-  Configure Proteus simulation environment.
-  Implement layered architecture in the Proteus project structure.
-  Prepare all files for development with header file guards.
-  Write typedefs and function prototypes.
-  Include lower layer drivers in upper layer/calling drivers' header files.
+  * Configure Proteus simulation environment.
+  * Implement layered architecture in the Proteus project structure.
+  * Prepare all files for development with header file guards.
+  * Write typedefs and function prototypes.
+  * Include lower layer drivers in upper layer/calling drivers' header files.
   
 ### Implementation
-  Write skeleton code for each function with comments.
-  Convert comments into appropriate code.
-  Ensure functions return error states.
+  * Write skeleton code for each function with comments.
+  * Convert comments into appropriate code.
+  * Ensure functions return error states.
   
 ### Testing
-  Develop test modules for each driver.
-  Implement and validate driver output within the Proteus simulation.
+  * Develop test modules for each driver.
+  * Implement and validate driver output within the Proteus simulation.
   
 ### System Flow
-  Define the system flow based on requirements.
-  Implement the system flow in the “APP_start” function.
+  * Define the system flow based on requirements.
+  * Implement the system flow in the “APP_start” function.
   
 ### User Stories and Testing
-  User Story 1: As a pedestrian, when I make a short press on the crosswalk button while the cars' green light is on and the pedestrian red light is on, I will 
-  wait for the yellow lights to blink for five seconds, then the cars' red light is on, and the pedestrian green light is on for five seconds, so that I can 
-  cross the street.
+  1) User Story 1: As a pedestrian, when I make a short press on the crosswalk button while the cars' green light is on and the pedestrian red light is on, I will wait for the yellow lights to blink for five seconds, then the cars' red light is on, and the pedestrian green light is on for five seconds, so that I can cross the street.
   
-  User Story 2: As a pedestrian, when I make a short press on the crosswalk button while the cars' yellow light is blinking and the pedestrian red light is on, I 
-  will wait for all yellow lights to blink for five seconds, then the cars' red light is on, and the pedestrian green light is on for five seconds, so that I can 
-  cross the street.
+  2) User Story 2: As a pedestrian, when I make a short press on the crosswalk button while the cars' yellow light is blinking and the pedestrian red light is on, I will wait for all yellow lights to blink for five seconds, then the cars' red light is on, and the pedestrian green light is on for five seconds, so that I can cross the street.
   
-  User Story 3: As a pedestrian, when I make a short press on the crosswalk button while the cars' red light is on and the pedestrian green light is on, I expect 
-  nothing to be done.
+  3) User Story 3: As a pedestrian, when I make a short press on the crosswalk button while the cars' red light is on and the pedestrian green light is on, I expect nothing to be done.
   
-  User Story 4: As a pedestrian, when I make a long press on the crosswalk button, I expect nothing to be done.
+  4) User Story 4: As a pedestrian, when I make a long press on the crosswalk button, I expect nothing to be done.
   
-  User Story 5: As a pedestrian, when I make a double press on the crosswalk button, I expect that the first press will do the action, and nothing will be done 
-  after the second press.
+  5) User Story 5: As a pedestrian, when I make a double press on the crosswalk button, I expect that the first press will do the action, and nothing will be done after the second press.
 
 ### Mini Project Conclusion
   This mini project aims to create an efficient Simulated Traffic Management System that handles both vehicle traffic and pedestrian crosswalk requests within 
@@ -103,26 +97,26 @@ We propose the development of an autonomous car capable of detecting obstacles a
   7) Manage tasks efficiently with FreeRTOS for multitasking and real-time operation.
      
 ### Components and Materials
-  Ultrasonic HC-SR04 sensor: To detect obstacles in the car's path.
-  Servo motor: For scanning the environment using the ultrasonic sensor.
-  L293D motor driver: To control the speed and direction of the car's motors.
-  Motors: To drive the car's wheels.
-  Caster wheel: To provide stability to the car's chassis.
-  Chassis: The framework to hold all components securely.
-  Infrared sensors: For line tracking.
-  Microcontroller compatible with FreeRTOS.
+  * Ultrasonic HC-SR04 sensor: To detect obstacles in the car's path.
+  * Servo motor: For scanning the environment using the ultrasonic sensor.
+  * L293D motor driver: To control the speed and direction of the car's motors.
+  * Motors: To drive the car's wheels.
+  * Caster wheel: To provide stability to the car's chassis.
+  * Chassis: The framework to hold all components securely.
+  * Infrared sensors: For line tracking.
+  * Microcontroller compatible with FreeRTOS.
   
 ### Project Implementation
-  Hardware Assembly: Assemble the chassis, attach the motors, and mount the caster wheel.
-  Ultrasonic Sensor Integration: Connect the ultrasonic sensor to the servo motor axis for scanning.
-  Motor Control: Integrate the L293D motor driver to control the car's movement.
-  LCD Integration: Connect the LCD display to show the car's current direction.
-  Software Development: Develop software to read ultrasonic sensor data, analyze it, control the motors, and implement line tracking.
-  Scanning Algorithm: Design an algorithm for the servo motor to scan the environment using the ultrasonic sensor.
-  Line Tracking Algorithm: Implement a line tracking algorithm using infrared sensors.
-  FreeRTOS Integration: Configure and integrate FreeRTOS for efficient multitasking and real-time control.
-  Testing and Calibration: Test the car's obstacle detection, avoidance, and line tracking capabilities. Calibrate the system for optimal performance.
-  Fine-tuning: Adjust parameters and algorithms to enhance the car's responsiveness and accuracy.
+  * Hardware Assembly: Assemble the chassis, attach the motors, and mount the caster wheel.
+  * Ultrasonic Sensor Integration: Connect the ultrasonic sensor to the servo motor axis for scanning.
+  * Motor Control: Integrate the L293D motor driver to control the car's movement.
+  * LCD Integration: Connect the LCD display to show the car's current direction.
+  * Software Development: Develop software to read ultrasonic sensor data, analyze it, control the motors, and implement line tracking.
+  * Scanning Algorithm: Design an algorithm for the servo motor to scan the environment using the ultrasonic sensor.
+  * Line Tracking Algorithm: Implement a line tracking algorithm using infrared sensors.
+  * FreeRTOS Integration: Configure and integrate FreeRTOS for efficient multitasking and real-time control.
+  * Testing and Calibration: Test the car's obstacle detection, avoidance, and line tracking capabilities. Calibrate the system for optimal performance.
+  * Fine-tuning: Adjust parameters and algorithms to enhance the car's responsiveness and accuracy.
   
 ### Final Project Expected Outcomes
 Upon successful completion of the project, we anticipate achieving the following outcomes:
