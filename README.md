@@ -28,14 +28,14 @@ We propose the development of a Simulated Traffic Management System that efficie
 3) Virtual LEDs for traffic lights - Red, Yellow, and Green for cars and pedestrians.
 
 #### Software Requirements
-In normal mode (simulation):
-  Traffic lights for cars will cycle every five seconds: Green, Yellow, Red, Yellow, Green.
-  The Yellow LED will blink for five seconds before transitioning to Green or Red.
-In pedestrian mode (simulation):
-  Transition to pedestrian mode when the virtual pedestrian button is pressed.
-  Pedestrians can cross the street when the pedestrian's Green LED is on.
-  Pedestrians must wait when cars have the right of way.
-  Specific sequences for pedestrian crosswalk requests.
+* In normal mode (simulation):
+  * Traffic lights for cars will cycle every five seconds: Green, Yellow, Red, Yellow, Green.
+  * The Yellow LED will blink for five seconds before transitioning to Green or Red.
+* In pedestrian mode (simulation):
+  * Transition to pedestrian mode when the virtual pedestrian button is pressed.
+  * Pedestrians can cross the street when the pedestrian's Green LED is on.
+  * Pedestrians must wait when cars have the right of way.
+  * Specific sequences for pedestrian crosswalk requests.
   
 ### System Design
   Define system layers.
