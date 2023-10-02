@@ -7,6 +7,22 @@
 #ifndef STK_PRIVATE_H
 #define STK_PRIVATE_H
 
+/**
+ * @brief Maximum Reload Value for SysTick Timer
+ *
+ * This macro defines the maximum valid reload value that can be used for configuring
+ * the SysTick timer's period. The SysTick timer is a down-counter that generates interrupts
+ * or overflows at regular intervals based on its reload value.
+ *
+ * @note The actual time duration between interrupts or overflows depends on the system clock
+ *       frequency and the value set using this macro.
+ *
+ * @warning Setting a reload value greater than this maximum may result in undefined behavior.
+ *
+ * @see MCAL_STK_SetReloadValue
+ */
+#define STK_RELOAD_MAX      0x00FFFFFF
+
 /*********************< Register Definitions **********************/
 #define STK_BASE_ADDRESS    0xE000E010U
 
@@ -74,5 +90,28 @@ typedef struct STK_RegDef_t{
 #define STK_CTRL_TICKINT_ENABLE          1
 #define STK_CTRL_TICKINT_DISABLE         0
 
+/**
+ * @brief Specifies the operation mode of the SysTick timer interval.
+ *
+ * The SysTick timer can operate in two modes: single-shot interval and periodic interval.
+ * - "STK_SINGLE_INTERVAL": Indicates that the SysTick timer operates in single-shot mode.
+ *   In this mode, the timer generates an interrupt only once after the specified interval
+ *   and then stops until reconfigured.
+ *
+ * - "STK_PERIOD_INTERVAL": Indicates that the SysTick timer operates in periodic mode.
+ *   In this mode, the timer generates interrupts at regular intervals specified by the
+ *   reload value, and it continues operating until explicitly disabled.
+ *
+ * These macros are used to configure the behavior of the SysTick timer interval, providing
+ * control over whether the timer generates interrupts once (single-shot) or repeatedly
+ * (periodic) at the specified interval.
+ *
+ * @note Choose the appropriate mode based on your application's timing requirements.
+ *
+ * @see MCAL_STK_SetIntervalSingle
+ * @see MCAL_STK_SetIntervalPeriodic
+ */
+#define STK_SINGLE_INTERVAL             0
+#define STK_PERIOD_INTERVAL             1
 
 #endif /**< STK_PRIVATE_H */ 

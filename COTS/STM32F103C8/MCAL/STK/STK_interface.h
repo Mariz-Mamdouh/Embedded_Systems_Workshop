@@ -7,6 +7,8 @@
 #ifndef STK_INTERFACE_H
 #define STK_INTERFACE_H
 
+typedef void(*STK_CallbackFunc_t)(void);
+
 /**
  * @brief Initializes the SysTick timer with the specified reload value.
  *
@@ -22,7 +24,45 @@
  *
  * @return None.
  */
-void MCAL_STK_Init(u32 Copy_Ticks);
+void MCAL_STK_xInit(u32 Copy_Ticks);
+
+/**
+ * @brief Initialize the SysTick Timer
+ *
+ * This function initializes the SysTick timer with the specified configuration settings.
+ * It can be used to configure the timer's clock source and enable/disable interrupts when
+ * the timer reaches zero.
+ *
+ * @note The SysTick timer is typically used for timekeeping or creating delays in software.
+ *
+ * @warning This function should be called before using the SysTick timer for any timing-related tasks.
+ *
+ * @param None.
+ *
+ * @return None.
+ *
+ * @sa MCAL_STK_Start
+ * @sa MCAL_STK_Stop
+ * @sa MCAL_STK_SetReloadValue
+ */
+void MCAL_STK_vInit(void);
+
+/**
+ * @brief Set the SysTick Timer Reload Value
+ *
+ * This function sets the reload value of the SysTick timer, which determines the period
+ * at which the timer generates interrupts or counts down.
+ *
+ * @param[in] Copy_ReloadValue The reload value to set (must be within the valid range).
+ *
+ * @note The actual time duration between interrupts or timer overflows depends on the
+ *       system clock frequency and the specified reload value.
+ *
+ * @return
+ *     - E_OK if the reload value was set successfully.
+ *     - E_NOT_OK if the reload value is out of range (see STK_RELOAD_MAX for the valid range).
+ */
+Std_ReturnType MCAL_STK_SetReloadValue(u32 Copy_ReloadValue);
 
 /**
  * @brief Starts the SysTick timer.
@@ -117,6 +157,53 @@ Std_ReturnType MCAL_STK_SetBusyWait(u32 Copy_MicroSeconds);
  * @return E_OK if the delay was successful, E_NOT_OK if an error occurred.
  */
 Std_ReturnType MCAL_STK_SetDelay_ms(f32 Copy_Milliseconds);
+
+/**
+ * @brief Configures the SysTick timer for a single-shot interval and associates a callback function.
+ *
+ * This function sets up the SysTick timer to generate a single interrupt after the specified
+ * interval in microseconds. It saves the provided callback function pointer and calculates
+ * the number of ticks required for the given interval. The timer is configured for a single-shot
+ * operation and starts counting down. When the timer reaches zero, the saved callback function
+ * is called. Returns E_OK if the configuration was successful; otherwise, returns E_NOT_OK.
+ *
+ * @param[in] Copy_Microseconds The interval in microseconds after which the timer should expire.
+ * @param[in] CallbackFunc      A pointer to the callback function to be executed when the timer expires.
+ *
+ * @return
+ *     - E_OK     if the configuration was successful.
+ *     - E_NOT_OK if an error occurred (e.g., if the callback function pointer is NULL).
+ * 
+ * @see STK_SINGLE_INTERVAL
+ * @see MCAL_STK_SetIntervalSingle
+ */
+Std_ReturnType MCAL_STK_SetIntervalSingle(u32 Copy_Microseconds, STK_CallbackFunc_t CallbackFunc);
+
+/**
+ * @brief Configures the SysTick timer for a periodic interval and associates a callback function.
+ *
+ * This function sets up the SysTick timer to operate in a periodic interval mode. It calculates
+ * the number of ticks required to wait for the specified duration in microseconds and configures
+ * the SysTick timer's reload value accordingly. When the timer reaches zero, it generates interrupts
+ * at regular intervals defined by the specified microseconds. The associated callback function
+ * is executed upon each interrupt.
+ *
+ * @param[in] Copy_Microseconds The interval duration in microseconds for SysTick timer interrupts.
+ * @param[in] CallbackFunc A pointer to the function to be executed upon each SysTick interrupt.
+ *
+ * @note The maximum delay achievable with this function, when the SysTick timer clock is 1 MHz, is approximately 16 seconds.
+ * @note Ensure that the callback function has a void return type and takes no parameters (void (*CallbackFunc)(void)).
+ * @note This function enables the SysTick timer and its interrupt.
+ *
+ * @return
+ *     - E_OK if the SysTick timer was configured successfully.
+ *     - E_NOT_OK if an invalid callback function pointer is provided.
+ *
+ * @see STK_SINGLE_INTERVAL
+ * @see MCAL_STK_SetIntervalSingle
+ */
+Std_ReturnType MCAL_STK_SetIntervalPeriodic(u32 Copy_Microseconds, STK_CallbackFunc_t CallbackFunc);
+
 
 #endif /**< STK_INTERFACE_H */
  
